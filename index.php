@@ -1,11 +1,18 @@
+<?php
+require 'includes/functions.php';
+
+$id = isset($_GET['id']) ? $_GET['id'] : 0;
+$id2 = isset($_GET['id']) ? $_GET['id'] : 0;
+
+
+$galleryPictures = findPaged(4, 0);
+
+
+?>
+
 <!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="utf8">
-    <title>Morgan Dawkins - Freelance Photograph - Home</title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display&display=swap" rel="stylesheet">
-</head>
+<?php require 'includes/head.php' ?>
 <body id="home">
     <header>
         <a href="index.html">
@@ -41,43 +48,30 @@
                             See all shots
                         </a>
                     </p>
+
+                    <?php foreach($galleryPictures as $galleryPicture){
+
+                            $galleryPicture['slug'];
+
+
+
+                    ?> 
+
                     <div id="pictures">
                         <a href="detail.html" title="Picture 1">
-                            <img src="css/small.jpg" alt="Picture 1">
+                            <img src="images/small/<?php echo $galleryPicture['slug'] ?>.jpg" alt="Picture 1">
                         </a>
-                        <a href="detail.html" title="Picture 2">
-                            <img src="css/small.jpg" alt="Picture 2">
-                        </a>
-                        <a href="detail.html" title="Picture 3">
-                            <img src="css/small.jpg" alt="Picture 3">
-                        </a>
-                        <a href="detail.html" title="Picture 4">
-                            <img src="css/small.jpg" alt="Picture 4">
-                        </a>
+                        <?php } ?>
                     </div>
                 </div><!-- end second column -->
             </div><!-- end row -->
             <p id="home-contact">
-                <a class="button" href="contact.html" title="Formulaire de contact">
+                <a class="button" href="contact.php" title="Formulaire de contact">
                     Contact me
                 </a>
             </p>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <ul>
-                <li>
-                    <a href="index.html" title="Photograph">Home</a>
-                </li>
-                <li>
-                    <a href="gallery.html" title="My shots">Gallery</a>
-                </li>
-                <li>
-                    <a href="contact.html" title="Contact form">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+    <?php require 'includes/footer.php' ?>
 </body>
 </html>
